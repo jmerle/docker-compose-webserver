@@ -1,0 +1,30 @@
+defaultEntryPoints = ["http", "https"]
+
+logLevel = "INFO"
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+
+[acme]
+storage = "acme.json"
+entryPoint = "https"
+onDemand = false
+onHostRule = true
+  [acme.httpChallenge]
+  entryPoint = "http"
+
+[api]
+
+[ping]
+entryPoint = "https"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+watch = true
+exposedByDefault = false

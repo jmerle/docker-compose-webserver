@@ -1,0 +1,34 @@
+version: '3.5'
+services:
+  traefik:
+    image: traefik
+    command: --docker.domain=${PRIMARY_DOMAIN} --acme.email=${LETS_ENCRYPT_EMAIL}
+    ports:
+      - "80:80"
+      - "443:443"
+    expose:
+      - 8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/traefik.toml
+    networks:
+      - traefik
+    labels:
+      traefik.enable: true
+      traefik.port: 8080
+      traefik.backend: "traefik"
+      traefik.frontend.rule: "Host:traefik.${PRIMARY_DOMAIN}"
+      traefik.frontend.auth.basic.users: "${TRAEFIK_AUTH}"
+    restart: always
+  watchtower:
+    image: v2tec/watchtower
+    command: --interval 10 --label-enable --cleanup
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+    restart: always
+networks:
+  traefik:
+    name: ${TRAEFIK_NETWORK}
+    external: true
