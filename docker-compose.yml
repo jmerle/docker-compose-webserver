@@ -25,7 +25,7 @@ services:
     restart: always
   watchtower:
     image: v2tec/watchtower
-    command: --interval 10 --label-enable --cleanup
+    command: --interval 900 --label-enable --cleanup
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
