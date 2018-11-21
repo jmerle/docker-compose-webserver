@@ -22,7 +22,7 @@ services:
       traefik.backend: "traefik"
       traefik.frontend.rule: "Host:traefik.${PRIMARY_DOMAIN}"
       traefik.frontend.auth.basic.users: "${TRAEFIK_AUTH}"
-    restart: always
+    restart: unless-stopped
   watchtower:
     image: v2tec/watchtower
     command: --interval 900 --label-enable --cleanup
@@ -30,7 +30,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
       com.centurylinklabs.watchtower.enable: true
-    restart: always
+    restart: unless-stopped
 networks:
   traefik:
     name: ${TRAEFIK_NETWORK}
