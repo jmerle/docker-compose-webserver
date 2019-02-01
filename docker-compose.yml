@@ -4,7 +4,10 @@ services:
     image: traefik
     command: --docker.domain=${PRIMARY_DOMAIN} --acme.email=${LETS_ENCRYPT_EMAIL} ${TRAEFIK_DOMAINS}
     environment:
-      - DO_AUTH_TOKEN=${DIGITAL_OCEAN_AUTH_TOKEN}
+      - OVH_ENDPOINT=${OVH_ENDPOINT}
+      - OVH_APPLICATION_KEY=${OVH_APPLICATION_KEY}
+      - OVH_APPLICATION_SECRET=${OVH_APPLICATION_SECRET}
+      - OVH_CONSUMER_KEY=${OVH_CONSUMER_KEY}
     ports:
       - "80:80"
       - "443:443"
