@@ -1,6 +1,6 @@
 # Docker Compose Webserver
 
-My docker-compose configuration for a DigitalOcean droplet I use that hosts some small web projects of mine. It contains a [Traefik](https://traefik.io/) container to serve as a reverse proxy with automatic Let's Encrypt SSL certificates and a [Watchtower](https://github.com/v2tec/watchtower) container to make sure my personal projects update automatically.
+My docker-compose configuration for a OVH VPS I use that hosts some small web projects of mine. It contains a [Traefik](https://traefik.io/) container to serve as a reverse proxy with automatic Let's Encrypt SSL certificates and a [Watchtower](https://github.com/v2tec/watchtower) container to make sure my personal projects update automatically.
 
 ## Usage
 

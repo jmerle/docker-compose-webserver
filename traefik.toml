@@ -17,7 +17,7 @@ entryPoint = "https"
 onDemand = false
 onHostRule = true
   [acme.dnsChallenge]
-  provider = "digitalocean"
+  provider = "ovh"
 
 [api]
 
