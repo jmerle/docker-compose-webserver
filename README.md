@@ -8,7 +8,7 @@ My docker-compose configuration for a OVH VPS I use that hosts some small web pr
 2. Copy `.env.example` to `.env` and modify the variables.
 3. Run `./start.sh`.
 
-To stop the services, run `docker-compose down`.
+To stop the services, run `docker-compose stop`.
 
 ### Traefik
 
