@@ -6,7 +6,8 @@ My docker-compose configuration for a OVH VPS I use that hosts some small web pr
 
 1. Clone this repository.
 2. Copy `.env.example` to `.env` and modify the variables.
-3. Run `./start.sh`.
+3. Create a file called `transip.key` with as contents the [private TransIP key](https://www.transip.nl/cp/account/api/) to use when acquiring SSL certificates.
+4. Run `./start.sh`.
 
 To stop the services, run `docker-compose down`.
 

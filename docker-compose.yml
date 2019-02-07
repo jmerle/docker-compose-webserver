@@ -4,10 +4,8 @@ services:
     image: traefik
     command: --docker.domain=${PRIMARY_DOMAIN} --acme.email=${LETS_ENCRYPT_EMAIL} ${TRAEFIK_DOMAINS}
     environment:
-      - OVH_ENDPOINT=${OVH_ENDPOINT}
-      - OVH_APPLICATION_KEY=${OVH_APPLICATION_KEY}
-      - OVH_APPLICATION_SECRET=${OVH_APPLICATION_SECRET}
-      - OVH_CONSUMER_KEY=${OVH_CONSUMER_KEY}
+      - TRANSIP_ACCOUNT_NAME=${TRANSIP_ACCOUNT_NAME}
+      - TRANSIP_PRIVATE_KEY_PATH=/transip.key
     ports:
       - "80:80"
       - "443:443"
@@ -17,6 +15,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/traefik.toml
       - ./acme.json:/acme.json
+      - ./transip.key:/transip.key
     networks:
       - traefik
     labels:

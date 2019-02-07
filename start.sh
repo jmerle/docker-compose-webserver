@@ -8,6 +8,12 @@ else
   exit 1
 fi
 
+# Check if the private TransIP key file exists
+if [ ! -e transip.key ]; then
+  echo "Please create a transip.key file containing your private TransIP key which is used when creating SSL certificates."
+  exit 1
+fi
+
 # Create acme.json file
 if [ ! -e acme.json ]; then
   touch acme.json
