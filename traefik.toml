@@ -24,10 +24,6 @@ onHostRule = true
 [ping]
 entryPoint = "https"
 
-[metrics]
-  [metrics.prometheus]
-    entryPoint = "https"
-
 [docker]
 endpoint = "unix:///var/run/docker.sock"
 watch = true
