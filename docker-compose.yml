@@ -2,10 +2,7 @@ version: '3.5'
 services:
   traefik:
     image: traefik
-    command: --docker.domain=${PRIMARY_DOMAIN} --acme.email=${LETS_ENCRYPT_EMAIL} ${TRAEFIK_DOMAINS}
-    environment:
-      - TRANSIP_ACCOUNT_NAME=${TRANSIP_ACCOUNT_NAME}
-      - TRANSIP_PRIVATE_KEY_PATH=/transip.key
+    command: --docker.domain=${PRIMARY_DOMAIN} --acme.email=${LETS_ENCRYPT_EMAIL}
     ports:
       - "80:80"
       - "443:443"
@@ -15,7 +12,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/traefik.toml
       - ./acme.json:/acme.json
-      - ./transip.key:/transip.key
     networks:
       - traefik
     labels:
