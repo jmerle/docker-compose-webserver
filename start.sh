@@ -35,4 +35,4 @@ echo -e "$network\c" > docker-compose-network.yml
 docker network inspect $TRAEFIK_NETWORK &>/dev/null || docker network create $TRAEFIK_NETWORK
 
 # Start the containers
-docker-compose up -d -f docker-compose.yml -f docker-compose-network.yml
+docker-compose -f docker-compose.yml -f docker-compose-network.yml up -d
