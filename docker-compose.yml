@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   traefik:
-    image: traefik
+    image: traefik:1.7
     command: --docker.domain=${PRIMARY_DOMAIN} --acme.email=${LETS_ENCRYPT_EMAIL}
     ports:
       - "80:80"
